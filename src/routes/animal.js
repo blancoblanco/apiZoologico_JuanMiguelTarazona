@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const animalSchema = require("../models/animal");
+const animalSchema = require("../modules/animalModel");
 
 router.post("/animals", (req, res) => {
     const animal = animalSchema(req.body);

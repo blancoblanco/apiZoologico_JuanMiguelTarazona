@@ -4,14 +4,17 @@ const animalSchema = mongoose.Schema({
         type: String,
         required: true,
     },
+    
     edad: {
         type: Number,
         required: true,
     },
+
     tipo: {
         type: String,
         required: true,
     },
+
     fecha: {
         type: Date,
         requiered: true,
