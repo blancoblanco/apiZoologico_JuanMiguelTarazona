@@ -10,7 +10,7 @@ router.post("/animals", (req, res) => {
         .catch((error) => res.json({ message: error }));
 });
 
-router.get("/animalst", (req, res) => {
+router.get("/animals", (req, res) => {
     animalSchema
         .find()  // Buscar todos los registros de animales en la base de datos
         .then((animals) => res.json(animals))  // Devolver los animales como respuesta
