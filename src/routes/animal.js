@@ -12,8 +12,39 @@ router.post("/animals", (req, res) => {
 
 router.get("/animals", (req, res) => {
     animalSchema
-        .find()  // Buscar todos los registros de animales en la base de datos
-        .then((animals) => res.json(animals))  // Devolver los animales como respuesta
-        .catch((error) => res.json({ message: error }));  // Si ocurre un error, devolver un mensaje de error
+        .find()  //
+        .then((animals) => res.json(animals)) 
+        .catch((error) => res.json({ message: error }));  
 });
+
+router.put("/animal/:id", (req, res) => {
+    const { id } = req.params;
+    const { nombre, edad, tipo, fecha } = req.body;
+    animalSchema
+        .updateOne({ _id: id }, {
+            $set: { nombre, edad, tipo, fecha }
+        })
+        .then((data) => res.json(data))
+        .catch((error) => res.json({ message: error }));
+
+});
+
+
+router.delete("/animal/:id", (req, res) => {
+  const { id } = req.params;
+  animalSchema
+    .findByIdAndDelete(id)
+    .then((data) => {
+      res.json(data);
+    })
+    .catch((error) => {
+      res.json({ message: error });
+    });
+});
+
+
+
+
+
+
 module.exports = router;
